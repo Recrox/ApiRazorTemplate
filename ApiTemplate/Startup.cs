@@ -25,27 +25,12 @@ namespace Site
             // Ajoutez d'autres services si nécessaire.
             services.AddRazorPages();
             services.AddAutoMapper(typeof(Startup));
-            
-            //services.AddSwaggerGen(c =>
-            //{
-            //    c.SwaggerDoc("v1", new OpenApiInfo { Title = "My API", Version = "v1" });
-            //});
-
         }
 
         public void Configure(IApplicationBuilder app)
         {
-            //if (app.Environment.IsDevelopment())
-            //{ 
-            
-            //}
             app.UseSwagger();
-
             app.UseSwaggerUI();
-            //app.UseSwaggerUI(c =>
-            //{
-            //    c.SwaggerEndpoint("/swagger/v1/swagger.json", "My API V1");
-            //});
 
             app.UseExceptionHandler("/Error");
             // La valeur HSTS par défaut est de 30 jours. Vous voudrez peut-être la changer pour les scénarios de production.
