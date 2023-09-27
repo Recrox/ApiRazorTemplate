@@ -1,8 +1,8 @@
 ﻿using Business.Domains;
+using Business.Interfaces;
 using Database;
-using Database.Repositories;
-using Microsoft.OpenApi.Models;
-using System.Reflection;
+using Database.Repositories.Concretes;
+using Database.Repositories.Interfaces;
 
 namespace Site
 {
@@ -17,10 +17,10 @@ namespace Site
             services.AddDbContext<BepContext>();
 
             services.AddTransient<IFinanceRepository, FinanceRepository>();
-            services.AddTransient<FinanceDomain, FinanceDomain>();
+            services.AddTransient<IFinanceDomain, FinanceDomain>();
 
             services.AddTransient<IBudgetRepository, BudgetRepository>();
-            services.AddTransient<BudgetDomain, BudgetDomain>();
+            services.AddTransient<IBudgetDomain, BudgetDomain>();
 
             // Ajoutez d'autres services si nécessaire.
             services.AddRazorPages();

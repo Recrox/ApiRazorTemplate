@@ -1,10 +1,11 @@
 ﻿using AutoMapper;
+using Business.Interfaces;
 using Core.Models;
-using Database.Repositories;
+using Database.Repositories.Interfaces;
 
 namespace Business.Domains
 {
-    public class BudgetDomain
+    public class BudgetDomain : IBudgetDomain
     {
         private readonly IBudgetRepository budgetRepository;
         private readonly IMapper mapper;

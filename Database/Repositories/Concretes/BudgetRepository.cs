@@ -1,12 +1,12 @@
-﻿using Database;
-using Database.Models;
+﻿using Database.Models;
+using Database.Repositories.Interfaces;
 using Site.Repositories.Factory;
 
-namespace Database.Repositories
+namespace Database.Repositories.Concretes
 {
     public class BudgetRepository : Repository<BudgetData>, IBudgetRepository
     {
-        public BudgetRepository(BepContext bepContext) : base(bepContext) 
+        public BudgetRepository(BepContext bepContext) : base(bepContext)
         {
 
         }

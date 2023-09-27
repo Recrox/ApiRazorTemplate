@@ -1,15 +1,18 @@
 ﻿using AutoMapper;
+using Business.Interfaces;
 using Core.Models;
-using Database.Repositories;
+using Database.Repositories.Interfaces;
 
 namespace Business.Domains
 {
-    public class FinanceDomain
+    public class FinanceDomain : IFinanceDomain
     {
         private readonly IFinanceRepository financeRepository;
         private readonly IMapper mapper;
 
-        public FinanceDomain(IFinanceRepository financeRepository, IMapper mapper)
+        public FinanceDomain(
+            IFinanceRepository financeRepository,
+            IMapper mapper)
         {
             this.financeRepository = financeRepository;
             this.mapper = mapper;
@@ -20,15 +23,9 @@ namespace Business.Domains
             await financeRepository.AddAsync(mapper.Map<FinData, Database.Models.FinData>(finDataToAdd));
         }
 
-        public async Task ShowAllFinData()
+        public async Task<IEnumerable<FinData>> GetAllAsync()
         {
-            var datas = await this.financeRepository.GetAllAsync();
-            foreach (var data in datas)
-            {
-                await financeRepository.GetAsync(data.Id);
-                Console.WriteLine($"{data.Id} {data.ENVIRO} {data.REALIZED}");
-            }
-
+            return this.mapper.Map<IEnumerable<Database.Models.FinData>, IEnumerable<FinData>>(await this.financeRepository.GetAllAsync());
         }
 
         public async Task GetFinData(int id)
