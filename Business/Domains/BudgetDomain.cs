@@ -10,7 +10,9 @@ namespace Business.Domains
         private readonly IBudgetRepository budgetRepository;
         private readonly IMapper mapper;
 
-        public BudgetDomain(IBudgetRepository budgetRepository,IMapper mapper)
+        public BudgetDomain(
+            IBudgetRepository budgetRepository,
+            IMapper mapper)
         {
             this.budgetRepository=budgetRepository;
             this.mapper = mapper;
