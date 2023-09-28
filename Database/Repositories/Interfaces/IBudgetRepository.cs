@@ -1,5 +1,5 @@
 ﻿using Database.Models;
-using Site.Repositories.Factory;
+using Database.Repositories.Factory;
 
 namespace Database.Repositories.Interfaces
 {

@@ -2,7 +2,7 @@
 
 #nullable disable
 
-namespace Site.Migrations
+namespace Database.Migrations
 {
     /// <inheritdoc />
     public partial class TestMigration : Migration

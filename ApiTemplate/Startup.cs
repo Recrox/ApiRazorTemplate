@@ -1,8 +1,10 @@
 ﻿using Business.Domains;
 using Business.Interfaces;
 using Database;
+using Database.Mapper;
 using Database.Repositories.Concretes;
 using Database.Repositories.Interfaces;
+using Site.Mapper;
 
 namespace Site
 {
@@ -24,7 +26,11 @@ namespace Site
 
             // Ajoutez d'autres services si nécessaire.
             services.AddRazorPages();
-            services.AddAutoMapper(typeof(Startup));
+            //services.AddAutoMapper(typeof(Startup));
+            services.AddAutoMapper(cfg => {
+                cfg.AddProfile<MappingSite>();
+                cfg.AddProfile<MappingDatabase>();
+            });
         }
 
         public void Configure(IApplicationBuilder app)

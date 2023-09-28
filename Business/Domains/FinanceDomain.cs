@@ -1,5 +1,4 @@
-﻿using AutoMapper;
-using Business.Interfaces;
+﻿using Business.Interfaces;
 using Core.Models;
 using Database.Repositories.Interfaces;
 
@@ -8,24 +7,22 @@ namespace Business.Domains
     public class FinanceDomain : IFinanceDomain
     {
         private readonly IFinanceRepository financeRepository;
-        private readonly IMapper mapper;
 
         public FinanceDomain(
-            IFinanceRepository financeRepository,
-            IMapper mapper)
+            IFinanceRepository financeRepository)
         {
             this.financeRepository = financeRepository;
-            this.mapper = mapper;
         }
 
         public async Task InsertDataFin(FinData finDataToAdd)
         {
-            await financeRepository.AddAsync(mapper.Map<FinData, Database.Models.FinData>(finDataToAdd));
+            //await financeRepository.AddAsync(finDataToAdd);
         }
 
         public async Task<IEnumerable<FinData>> GetAllAsync()
         {
-            return this.mapper.Map<IEnumerable<Database.Models.FinData>, IEnumerable<FinData>>(await this.financeRepository.GetAllAsync());
+            var databaseFinData = await this.financeRepository.GetAllAsync();
+            return databaseFinData.Select(finData =>finData);
         }
 
         public async Task GetFinData(int id)

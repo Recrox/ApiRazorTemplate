@@ -1,5 +1,4 @@
-﻿using AutoMapper;
-using Business.Interfaces;
+﻿using Business.Interfaces;
 using Core.Models;
 using Database.Repositories.Interfaces;
 
@@ -8,14 +7,11 @@ namespace Business.Domains
     public class BudgetDomain : IBudgetDomain
     {
         private readonly IBudgetRepository budgetRepository;
-        private readonly IMapper mapper;
 
         public BudgetDomain(
-            IBudgetRepository budgetRepository,
-            IMapper mapper)
+            IBudgetRepository budgetRepository)
         {
             this.budgetRepository=budgetRepository;
-            this.mapper = mapper;
         }
 
         public async Task InsertBudgetData()

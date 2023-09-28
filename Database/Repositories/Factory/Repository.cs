@@ -1,18 +1,35 @@
-﻿using Database.Models;
+﻿using AutoMapper;
+using Database.Models;
 using Microsoft.EntityFrameworkCore;
 
-namespace Site.Repositories.Factory
+namespace Database.Repositories.Factory
 {
     public abstract class Repository<T> : IRepository<T> where T : BaseEntity
     {
         protected readonly DbContext dbContext;
+        protected readonly IMapper mapper;
 
-        protected Repository(DbContext dbContext)
+        protected Repository(
+            DbContext dbContext,
+            IMapper mapper)
         {
             this.dbContext = dbContext;
+            this.mapper = mapper;
         }
 
-        public async Task<IEnumerable<T>> GetAllAsync() => await dbContext.Set<T>().ToListAsync();
+        public async Task<IEnumerable<T>> GetAllAsync()
+        {
+            var datas =  await dbContext.Set<T>().ToListAsync();
+            
+            return datas;
+        }
+
+        //public async Task<IEnumerable<TDto>> GetAllAsync<TDto>()
+        //{
+        //    var datas = await dbContext.Set<T>().ToListAsync();
+        //    var dtos = mapper.Map<IEnumerable<TDto>>(datas);
+        //    return dtos;
+        //}
 
         public async Task<T> GetAsync(int id) => await dbContext.Set<T>().FirstOrDefaultAsync(entity => entity.Id == id) ?? throw new NullReferenceException();
 

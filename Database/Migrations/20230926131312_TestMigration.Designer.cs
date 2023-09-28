@@ -9,7 +9,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
 
-namespace Site.Migrations
+namespace Database.Migrations
 {
     [DbContext(typeof(BepContext))]
     [Migration("20230926131312_TestMigration")]

@@ -1,12 +1,13 @@
-﻿using Database.Models;
+﻿using AutoMapper;
+using Database.Models;
+using Database.Repositories.Factory;
 using Database.Repositories.Interfaces;
-using Site.Repositories.Factory;
 
 namespace Database.Repositories.Concretes
 {
     public class BudgetRepository : Repository<BudgetData>, IBudgetRepository
     {
-        public BudgetRepository(BepContext bepContext) : base(bepContext)
+        public BudgetRepository(BepContext bepContext, IMapper mapper) : base(bepContext, mapper)
         {
 
         }

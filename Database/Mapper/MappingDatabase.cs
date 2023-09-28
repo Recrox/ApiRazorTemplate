@@ -1,11 +1,10 @@
-﻿namespace Site.Mapper;
-
-using AutoMapper;
+﻿using AutoMapper;
 using Core.Models;
 
-public class MappingProfile : Profile
+namespace Database.Mapper;
+public class MappingDatabase : Profile
 {
-    public MappingProfile()
+    public MappingDatabase()
     {
         CreateMap<Models.BudgetData, BudgetData>().ReverseMap();
         CreateMap<Models.FinData, FinData>().ReverseMap();

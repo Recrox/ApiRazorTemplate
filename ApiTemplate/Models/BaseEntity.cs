@@ -1,11 +1,10 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace Site.Models
+namespace Site.Models;
+
+public class BaseEntity
 {
-    public class BaseEntity
-    {
-        [Key]
-        //[DatabaseGenerated(DatabaseGeneratedOption.Identity)]
-        public int Id { get; set; }
-    }
+    [Key]
+    //[DatabaseGenerated(DatabaseGeneratedOption.Identity)]
+    public int Id { get; set; }
 }

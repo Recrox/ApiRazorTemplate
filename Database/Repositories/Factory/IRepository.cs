@@ -1,4 +1,4 @@
-﻿namespace Site.Repositories.Factory
+﻿namespace Database.Repositories.Factory
 {
     public interface IRepository<T>
     {
